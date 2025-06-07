@@ -1,6 +1,15 @@
 import axios from 'axios';
 import admin from 'firebase-admin';
 
+const now = new Date();
+const pauseUntil = new Date('2025-07-01T12:00:00Z'); // Change to your desired resume date
+console.log(`🕒 Current time: ${now.toISOString()}`);
+
+if (now < pauseUntil) {
+  console.log(`⏸️  Upload paused until ${pauseUntil.toISOString().split('T')[0]}`);
+  process.exit(0);
+}
+
 const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
 
 admin.initializeApp({
@@ -8,6 +17,7 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+
 
 const extractOrganization = (url) => {
   try {
