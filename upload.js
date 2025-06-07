@@ -34,7 +34,7 @@ const uploadContests = async () => {
     const { data } = await axios.get('https://kytalist-cp-backend.vercel.app/api');
     let uploaded = 0;
 
-  for (const contest of data.slice(0, 1)) {
+  for (const contest of data.slice(0, 3)) {
     const dateUTC = new Date(contest.start);
     const utc6 = new Date(dateUTC.getTime() + 6 * 60 * 60 * 1000); // UTC+6
     const dateStr = utc6.toISOString().split('T')[0];
