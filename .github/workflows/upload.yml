@@ -2,7 +2,7 @@ name: Weekly Contest Upload
 
 on:
   schedule:
-    - cron: '0 0 2-30/3 * *'
+    - cron: '0 0 2-30/4 * *'
   workflow_dispatch:     # Allow manual trigger
 
 jobs:
